@@ -123,8 +123,7 @@ module.exports = {
       countdownModule: path.join(
         __dirname,
         './styleguide/countdown/CountdownModule.js'
-      ),
-
+      )
     }
   }
 }
