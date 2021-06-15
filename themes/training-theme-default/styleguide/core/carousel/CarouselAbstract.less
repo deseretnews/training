@@ -23,13 +23,18 @@
     display: block;
 
     &.previous {
-      left: 0;
+      left: 100%;
+      top: 100%;
+      transform: translate(-200%, -100%);
     }
 
     &.next {
       right: 0;
+      top: 100%;
+      transform: translateY(-100%);
     }
   }
+
 
   &-slide {
     display: none;
@@ -62,4 +67,6 @@
       }
     }
   }
+
+
 }

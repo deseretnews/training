@@ -1,0 +1,12 @@
+{{#if items}}
+<ps-carousel class="ListZ" {{include "/core/list/List-attributes.hbs" this}}>
+   {{include "/core/list/List-header.hbs" this className="ListZ"}}
+   <div class="ListZ-slides">
+       {{#each items}}
+       <div class="ListZ-slide">
+           {{include "/core/promo/PromoB.hbs" this}}
+       </div>
+       {{/each}}
+   </div>
+</ps-carousel>
+{{else}}{{~noResultsModule~}}{{/if}}

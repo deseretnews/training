@@ -10,6 +10,7 @@ import com.psddev.dari.util.StorageItem;
 
 public interface ImagePreviewHtml {
 
+
     /**
      * Returns CMS UI HTML markup for the image fallback when it's not explicitly published in the object field. Used
      * for dynamic ToolUi.NoteHtml.
@@ -19,8 +20,8 @@ public interface ImagePreviewHtml {
     default String writePreviewImageHtml(ImageOption image) {
 
         StorageItem file = Optional.ofNullable(image)
-            .map(ImageOption::getImageOptionFile)
-            .orElse(null);
+                .map(ImageOption::getImageOptionFile)
+                .orElse(null);
 
         if (file == null) {
             return "<span></span>";
@@ -36,8 +37,8 @@ public interface ImagePreviewHtml {
             htlWriter.writeEnd();
 
             htlWriter.writeTag("img",
-                "src", new ImageTag.Builder(file).setHeight(100).toUrl(),
-                "style", "width: auto; height: 100px; border:solid 1px #cdcdcd; padding: 3px;");
+                    "src", new ImageTag.Builder(file).setHeight(100).toUrl(),
+                    "style", "width: auto; height: 100px; border:solid 1px #cdcdcd; padding: 3px;");
 
         } catch (Exception e) {
             // ignore
@@ -45,4 +46,5 @@ public interface ImagePreviewHtml {
 
         return stringWriter.toString();
     }
+
 }

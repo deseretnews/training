@@ -53,4 +53,5 @@ public class SmallRichTextToolbar implements RichTextToolbar {
             LinkRichTextElement.class
         );
     }
+
 }

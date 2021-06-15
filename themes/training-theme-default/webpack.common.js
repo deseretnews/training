@@ -39,7 +39,15 @@ module.exports = {
         './styleguide/core/action-bar/ActionBar.js'
       ),
       banner: path.join(__dirname, './styleguide/core/banner/Banner.js'),
+      bspAccordion: path.join(
+        __dirname,
+        './styleguide/core/promo/PromoCollapsible.js'
+      ),
       carousel: path.join(__dirname, './styleguide/core/carousel/Carousel.js'),
+      countdownModule: path.join(
+        __dirname,
+        './styleguide/countdown/CountdownModule.js'
+      ),
       talkCustom: path.join(
         __dirname,
         './styleguide/community/commenting/TalkCustom.js'
@@ -92,7 +100,6 @@ module.exports = {
         __dirname,
         './styleguide/core/video/VideoPlaylist.js'
       ),
-
       videoAnalytics: path.join(
         __dirname,
         './styleguide/core/video/VideoAnalytics.js'
@@ -112,7 +119,12 @@ module.exports = {
       youTubeVideoPlayer: path.join(
         __dirname,
         './styleguide/youtube/YouTubeVideoPlayer.js'
-      )
+      ),
+      countdownModule: path.join(
+        __dirname,
+        './styleguide/countdown/CountdownModule.js'
+      ),
+
     }
   }
 }

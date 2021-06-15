@@ -31,6 +31,24 @@
       ]
     },
     {
+      "name": "Countdown",
+      "pages": [
+        {
+          "name": "End of the World Countdown",
+          "content": "/countdown/CountdownModule.html"
+        }
+      ]
+    },
+    {
+      "name": "Heads Up Display (HUD)",
+      "pages": [
+        {
+          "name": "Heads Up Display (HUD)",
+          "content": "/training/hud/Hud.html"
+        }
+      ]
+    },
+    {
       "name": "Promos",
       "hideTabs": true,
       "pages": [
@@ -145,14 +163,31 @@
           "content": "/core/list/ListK.html"
         },
         {
+          "name": "List Z",
+          "content": "/core/list/ListZ.html"
+        },
+        {
           "name": "List Tags",
           "content": "/core/list/ListTags.html"
+        },
+        {
+          "name": "List Z",
+          "content": "/core/list/ListZ.html"
         }
       ]
     },
     {
       "name": "Pages",
       "pages": "/examples/**.html"
+    },
+    {
+      "name": "Countdown",
+      "pages": [
+        {
+          "name": "End of the World Countdown",
+          "content": "/countdown/CountdownModule.html"
+        }
+      ]
     }
   ]
 }

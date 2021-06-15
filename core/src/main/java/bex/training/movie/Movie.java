@@ -7,6 +7,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import bex.training.character.Character;
+import bex.training.hud.Hud;
 import bex.training.release.Releasable;
 import brightspot.core.image.ImageOption;
 import brightspot.core.link.Linkable;
@@ -30,11 +31,11 @@ import com.psddev.dari.util.StringUtils;
 @ToolUi.Main
 @Recordable.PreviewField("cover/file")
 public class Movie extends Content implements Linkable,
-                                              PromotableWithOverrides,
-                                              Releasable,
-                                              Shareable,
-                                              Sluggable,
-                                              Taggable {
+        PromotableWithOverrides,
+        Releasable,
+        Shareable,
+        Sluggable,
+        Taggable {
 
     // Main.
 
@@ -60,6 +61,11 @@ public class Movie extends Content implements Linkable,
     @Indexed
     @ToolUi.Filterable
     private Phase phase;
+
+    @Required
+    @Indexed
+    @ToolUi.Filterable
+    private Hud hud;
 
     // Getters and Setters.
 
@@ -101,6 +107,14 @@ public class Movie extends Content implements Linkable,
 
     public void setPhase(Phase phase) {
         this.phase = phase;
+    }
+
+    public Hud getHud() {
+        return hud;
+    }
+
+    public void setHud(Hud hud) {
+        this.hud = hud;
     }
 
     @Indexed
@@ -166,9 +180,9 @@ public class Movie extends Content implements Linkable,
 
         // Get a set of all tags name keywords.
         keywords.addAll(asTaggableData().getTags().stream()
-            .map(Tag::getDisplayName)
-            .flatMap(tagDisplayName -> Arrays.stream(tagDisplayName.split(" ")))
-            .collect(Collectors.toSet()));
+                .map(Tag::getDisplayName)
+                .flatMap(tagDisplayName -> Arrays.stream(tagDisplayName.split(" ")))
+                .collect(Collectors.toSet()));
 
         return keywords;
     }

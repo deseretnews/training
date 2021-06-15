@@ -1,0 +1,28 @@
+{
+  "_template": "/training/hud/Hud.hbs",
+  "battleName": "{{words(5)}}",
+  "href": "https://google.com",
+  "image": {
+    "_include": "/core/image/Image.json"
+  },
+  "villains": [
+    {
+      "_include": "/core/promo/PromoB.json"
+    },
+    {
+      "_include": "/core/promo/PromoB.json"
+    },
+    {
+      "_include": "/core/promo/PromoB.json"
+    }
+  ],
+  "heroes": [
+    {
+      "_include": "/core/promo/PromoB.json"
+    },
+    {
+      "_include": "/core/promo/PromoB.json"
+    }
+  ],
+  "_hidden": false
+}

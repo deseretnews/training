@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Optional;
 
 import bex.training.character.Character;
+import bex.training.hud.Hud;
 import brightspot.core.page.AbstractContentPageViewModel;
 import brightspot.core.section.Section;
 import brightspot.core.tool.RichTextUtils;
@@ -15,6 +16,7 @@ import com.psddev.styleguide.core.list.ListViewItemsField;
 import com.psddev.styleguide.training.movie.MoviePageView;
 import com.psddev.styleguide.training.movie.MoviePageViewCoverField;
 import com.psddev.styleguide.training.movie.MoviePageViewFeaturedCharactersField;
+import com.psddev.styleguide.training.movie.MoviePageViewHudField;
 
 public class MoviePageViewModel extends AbstractContentPageViewModel<Movie> implements MoviePageView, PageEntryView {
 
@@ -45,6 +47,11 @@ public class MoviePageViewModel extends AbstractContentPageViewModel<Movie> impl
     }
 
     @Override
+    public Iterable<? extends MoviePageViewHudField> getHud() {
+        return createViews(MoviePageViewHudField.class, model.getHud());
+    }
+
+    @Override
     public CharSequence getName() {
         return model.getName();
     }
@@ -63,7 +70,6 @@ public class MoviePageViewModel extends AbstractContentPageViewModel<Movie> impl
 
     @Override
     public CharSequence getReleaseDate() {
-        if(model.getReleaseDate()==null)return null;
         return RELEASE_DATE_FORMAT.format(model.getReleaseDate());
     }
 

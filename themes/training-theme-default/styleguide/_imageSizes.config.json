@@ -51,6 +51,10 @@
     "twitterSharing": {
       "width": 1200,
       "height": 675
+    },
+    "countdownBanner": {
+      "width": 500,
+      "height": 100
     }
   }
 }

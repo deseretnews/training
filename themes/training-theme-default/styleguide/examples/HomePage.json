@@ -59,6 +59,17 @@
           }
         ]
       }
+    },
+    {
+      "_template": "/core/container/Container.hbs",
+      "rows": {
+        "_template": "/core/container/OneColumnContainer.hbs",
+        "columnOne": [
+          {
+            "_include": "/core/list/ListZ.json"
+          }
+        ]
+      }
     }
   ]
 }

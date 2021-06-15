@@ -55,6 +55,7 @@ subprojects {
             api('org.apache.solr:solr-solrj:8.6.1') {
                 force = true
             }
+            api 'org.apache.commons:commons-math3:3.6.1'
         }
     }
 

@@ -93,6 +93,12 @@
           "hidden": true,
           "example": "/core/list/ListSection.json",
           "template": "/core/list/ListSection.hbs"
+        },
+        {
+          "displayName": "List Z",
+          "example": "/core/list/ListZ.json",
+          "height": 500,
+          "width": 800
         }
       ]
     }
