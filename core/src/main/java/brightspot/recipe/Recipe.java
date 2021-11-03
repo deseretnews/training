@@ -24,6 +24,8 @@ import com.psddev.dari.util.UnresolvedState;
 public class Recipe extends Content implements
     NoUrlsWidget {
 
+    static final String RECIPE_TAGS_FIELD = "recipeTags";
+    static final String RECIPE_TAG_NAMES_FIELD = "getRecipeTagNames";
     private static final String TIMING_CLUSTER = "Timing";
 
     @Indexed
