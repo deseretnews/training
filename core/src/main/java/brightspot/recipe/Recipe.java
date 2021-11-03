@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import brightspot.image.WebImage;
@@ -12,10 +14,12 @@ import brightspot.rte.SmallRichTextToolbar;
 import brightspot.rte.TinyRichTextToolbar;
 import brightspot.util.MoreStringUtils;
 import brightspot.util.NoUrlsWidget;
+import brightspot.util.RichTextUtils;
 import com.psddev.cms.db.Content;
 import com.psddev.cms.db.ToolUi;
 import com.psddev.cms.ui.form.DynamicPlaceholderMethod;
 import com.psddev.cms.ui.form.Note;
+import com.psddev.dari.util.UnresolvedState;
 
 public class Recipe extends Content implements
     NoUrlsWidget {
@@ -30,6 +34,7 @@ public class Recipe extends Content implements
     @DynamicPlaceholderMethod("getTitle")
     private String internalName;
 
+    @Indexed
     private Difficulty difficulty;
 
     @ToolUi.RichText(inline = false, toolbar = SmallRichTextToolbar.class)
@@ -40,18 +45,22 @@ public class Recipe extends Content implements
 
     private WebImage image;
 
+    @Indexed
     private List<RecipeTag> recipeTags;
 
+    @Indexed
     @Note("Value is in minutes")
     @ToolUi.Cluster(TIMING_CLUSTER)
     @ToolUi.CssClass("is-third")
     private Integer prepTime;
 
+    @Indexed
     @Note("Value is in minutes")
     @ToolUi.Cluster(TIMING_CLUSTER)
     @ToolUi.CssClass("is-third")
     private Integer inactivePrepTime;
 
+    @Indexed
     @Note("Value is in minutes")
     @ToolUi.Cluster(TIMING_CLUSTER)
     @ToolUi.CssClass("is-third")
@@ -158,6 +167,8 @@ public class Recipe extends Content implements
 
     // --- API methods ---
 
+    @Indexed
+    @ToolUi.Hidden
     public Integer getTotalTime() {
         return Optional.ofNullable(getTotalTimeOverride())
             .orElseGet(this::getTotalTimeFallback);
@@ -173,6 +184,27 @@ public class Recipe extends Content implements
             .filter(Objects::nonNull)
             .mapToInt(Integer::intValue)
             .reduce(0, Integer::sum);
+    }
+
+    // --- Indexes ---
+
+    @Indexed
+    @ToolUi.Hidden
+    @ToolUi.Sortable
+    public Integer getDifficultyLevel() {
+        return Optional.ofNullable(getDifficulty())
+            .map(Difficulty::getCode)
+            .orElse(null);
+    }
+
+    @Indexed
+    @ToolUi.Hidden
+    public Set<String> getRecipeTagNames() {
+        return UnresolvedState.resolveAndGet(this, Recipe::getRecipeTags)
+            .stream()
+            .map(RecipeTag::getName)
+            .map(RichTextUtils::richTextToPlainText)
+            .collect(Collectors.toSet());
     }
 
     // --- Recordable support ---
