@@ -10,16 +10,24 @@ import brightspot.image.WebImage;
 import brightspot.rte.LargeRichTextToolbar;
 import brightspot.rte.SmallRichTextToolbar;
 import brightspot.rte.TinyRichTextToolbar;
+import brightspot.util.MoreStringUtils;
+import brightspot.util.NoUrlsWidget;
 import com.psddev.cms.db.Content;
 import com.psddev.cms.db.ToolUi;
+import com.psddev.cms.ui.form.DynamicPlaceholderMethod;
+import com.psddev.cms.ui.form.Note;
 
-public class Recipe extends Content {
+public class Recipe extends Content implements
+    NoUrlsWidget {
+
+    private static final String TIMING_CLUSTER = "Timing";
 
     @Indexed
     @Required
     @ToolUi.RichText(toolbar = TinyRichTextToolbar.class)
     private String title;
 
+    @DynamicPlaceholderMethod("getTitle")
     private String internalName;
 
     private Difficulty difficulty;
@@ -34,13 +42,25 @@ public class Recipe extends Content {
 
     private List<RecipeTag> recipeTags;
 
+    @Note("Value is in minutes")
+    @ToolUi.Cluster(TIMING_CLUSTER)
+    @ToolUi.CssClass("is-third")
     private Integer prepTime;
 
+    @Note("Value is in minutes")
+    @ToolUi.Cluster(TIMING_CLUSTER)
+    @ToolUi.CssClass("is-third")
     private Integer inactivePrepTime;
 
+    @Note("Value is in minutes")
+    @ToolUi.Cluster(TIMING_CLUSTER)
+    @ToolUi.CssClass("is-third")
     private Integer cookTime;
 
     @DisplayName("Total Time")
+    @DynamicPlaceholderMethod("getTotalTimeFallback")
+    @Note("Value is in minutes")
+    @ToolUi.Cluster(TIMING_CLUSTER)
     private Integer totalTimeOverride;
 
     // --- Getters/setters ---
@@ -153,5 +173,12 @@ public class Recipe extends Content {
             .filter(Objects::nonNull)
             .mapToInt(Integer::intValue)
             .reduce(0, Integer::sum);
+    }
+
+    // --- Recordable support ---
+
+    @Override
+    public String getLabel() {
+        return MoreStringUtils.firstNonBlank(getInternalName(), this::getTitle);
     }
 }
