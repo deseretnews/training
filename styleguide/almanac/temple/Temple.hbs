@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="{{#with language}}{{this}}{{else}}en{{/with}}">
+    <head>
+        <title>Hello World, its a Temple</title>
+    </head>
+<body>
+{{#with name}}
+    <p>The name of our temple is: {{this}}</p>
+{{/with}}
+{{#with description}}
+    <p>The name of our temple is: {{this}}</p>
+{{/with}}
+
+{{~#each gallery}}
+    <div class="gallery">
+        {{this}}
+    </div>
+{{~/each~}}
+</body>
+</html>

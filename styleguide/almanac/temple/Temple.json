@@ -1,0 +1,13 @@
+{
+  "_include": "/core/page/ContentPage.json",
+  "_template": "Temple.hbs",
+  "name": "",
+  "description": "",
+  "gallery": [
+    {
+      "_include": "/core/image/Image.json",
+      "_repeat": 4
+    }
+  ],
+  "_hidden": false
+}
